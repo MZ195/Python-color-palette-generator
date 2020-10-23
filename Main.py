@@ -1,5 +1,4 @@
 # import the necessary packages
-from numpy.lib.type_check import imag
 from sklearn.cluster import KMeans
 import matplotlib.pyplot as plt
 import argparse
@@ -35,4 +34,4 @@ bar = utils.plot_colors(hist, clt.cluster_centers_)
 plt.figure()
 plt.axis("off")
 plt.imshow(bar)
-plt.show()
+plt.savefig("colors.png")
