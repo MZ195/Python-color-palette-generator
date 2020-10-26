@@ -5,7 +5,7 @@ import argparse
 import cv2
 
 
-def plot_colors(centroids, width):
+def generate_colors_palettes(centroids, width):
     # initialize the bar chart representing the colors
     img = np.zeros((100, width, 3), dtype="uint8")
     startX = 0
@@ -13,9 +13,9 @@ def plot_colors(centroids, width):
 
     # loop over the color of each cluster
     for color in centroids:
-        # plot the relative percentage of each cluster
-        endX = startX + offset
 
+        endX = startX + offset
+        # drawing white space between the colors
         cv2.rectangle(img, (int(startX), 0), ((startX+5), offset),
                       [255, 255, 255], -1)
 
@@ -43,23 +43,25 @@ if __name__ == "__main__":
     # reshape the image to be a list of pixels
     image_array = image.reshape((image.shape[0] * image.shape[1], 3))
 
-    # cluster the pixel intensities
+    # cluster the pixels
     clt = KMeans(n_clusters=args["clusters"])
     clt.fit(image_array)
 
     # create the color palette
-    color_palette = plot_colors(clt.cluster_centers_, width)
+    color_palette = generate_colors_palettes(clt.cluster_centers_, width)
 
-    # creating the final image
+    # creating the final image with white background
     final_image = Image.new(
         'RGB', (width+10, (height + 115)), color=(255, 255, 255, 0))
     color_palette_image = Image.fromarray(color_palette, 'RGB')
 
+    # adding white border
     top, bottom, left, right = [5]*4
     img_with_border = cv2.copyMakeBorder(
         image, top, bottom, left, right, cv2.BORDER_CONSTANT, value=[255, 255, 255])
     image = Image.fromarray(img_with_border, 'RGB')
 
+    # constrocting the final image
     final_image.paste(image, (0, 0))
     final_image.paste(color_palette_image, (0, height+10))
 
