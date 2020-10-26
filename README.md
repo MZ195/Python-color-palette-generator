@@ -3,7 +3,7 @@
 ## Introduction
 
 A neat application of K-means algorithm is generating color Palettes from images.<br/>
-Kmeans algorithm is an iterative algorithm that tries to partition the dataset into Kpre-defined distinct non-overlapping subgroups (clusters) where each data point belongs to only one group.<br/>
+K-means algorithm is an iterative algorithm that tries to partition the dataset into K pre-defined distinct non-overlapping subgroups (clusters) where each data point belongs to only one group.<br/>
 
 The way kmeans algorithm works is as follows:
 1. Specify number of clusters K.
@@ -25,7 +25,7 @@ In addition, we used [`PIL Image`](https://pillow.readthedocs.io/en/stable/refer
  <br/><br/>
  
  <img src="results/Revenant.png">
- <a href="https://www.imdb.com/title/tt1663202/?ref_=nv_sr_srsg_0">The Revenant</a>
+ <a href="https://www.imdb.com/title/tt1663202/?ref_=nv_sr_srsg_0">The Reverent</a>
  <br/><br/>
  
  <img src="results/birdman.png">
@@ -39,7 +39,7 @@ In addition, we used [`PIL Image`](https://pillow.readthedocs.io/en/stable/refer
 `imgs` all tested images in this project.<br/>
 
  ## To Run
- After installoing the required libraries, take note of the following two arguments:<br/>
+ After installing the required libraries, take note of the following two arguments:<br/>
  `-i` path of the image<br/>
  `-c` number of clusters<br/>
  ```
